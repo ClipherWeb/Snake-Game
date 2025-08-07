@@ -1,0 +1,123 @@
+/* Reset & Layout */
+body {
+  background-color: black;
+  color: limegreen;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: 2rem;
+}
+
+/* Game Board */
+#game-board {
+  width: 400px;
+  height: 400px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  background-color: #111;
+  border: 2px solid limegreen;
+  box-shadow: 0 0 15px limegreen;
+}
+
+/* Basic Cell */
+.cell {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0.5px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;   
+  line-height: 1;        
+  font-size: 0;          
+}
+
+/* Snake Styling */
+.snake {
+  background-color: limegreen;
+  border-radius: 4px;
+  box-shadow:
+    0 0 5px limegreen,
+    0 0 10px limegreen,
+    0 0 15px limegreen;
+  transform: scale(1.05); /* 🌀 subtle slither effect */
+}
+
+/* Snake Head (first segment) */
+.snake-head {
+  font-size: 18px;
+  line-height: 1;
+  background: none;
+  text-shadow: 0 0 5px #ffff33, 0 0 10px #ffff33;
+}
+
+
+
+/* Food Styling */
+.food {
+  background-color: red;
+  border-radius: 50%;
+  box-shadow:
+    0 0 5px red,
+    0 0 10px red,
+    0 0 15px red;
+  animation: pulse 1s infinite ease-in-out;
+}
+
+/* Score Display */
+#score {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* Glow Pulse for Food */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red;
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red;
+  }
+}
+
+@keyframes death {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4) rotate(180deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.death {
+  animation: death 0.8s ease forwards;
+}
+
+.rank-display {
+  color: #00ff99;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+}
